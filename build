@@ -1,0 +1,1 @@
+docker build -t titpetric/ucarp -f Dockerfile .

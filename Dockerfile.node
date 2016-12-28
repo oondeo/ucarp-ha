@@ -1,9 +1,0 @@
-FROM debian
-MAINTAINER Khurram <khuziz@hotmail.com>
-
-RUN apt-get update
-
-# npm requirements
-RUN apt-get install -qy build-essential
-
-RUN apt-get install -qy nodejs npm
