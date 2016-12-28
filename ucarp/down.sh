@@ -10,5 +10,5 @@ fi
 
 for i in $@
 do
-  ip addr del $i/32 dev $DEV
+  ip addr del $i/32 dev $IPDEV
 done

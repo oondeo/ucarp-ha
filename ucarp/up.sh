@@ -10,5 +10,5 @@ fi
 
 for i in $VIP $IPS
 do
-  ip addr add $i dev $DEV
+  ip addr add $i dev $IPDEV
 done
