@@ -7,4 +7,4 @@ echo "Using id: $VHID"
 NET=`ip addr show dev $DEV|awk '/inet[^6]/ {print $2}'`
 RIP=`echo $NET|cut -d/ -f1`
 
-exec ucarp -i "$DEV" -s "$RIP" -v "$VHID" -p "$PASS" -a "$VIP" -x "$IPS" -u /ucarp/up.sh -d /ucarp/down.sh -z --deadratio=5
+exec ucarp -i "$DEV" -s "$RIP" -v "$VHID" -p "$PASS" -a "$VIP" -x "$IPS" -u /ucarp/up.sh -d /ucarp/down.sh -x "$IPDEV" -z --deadratio=5

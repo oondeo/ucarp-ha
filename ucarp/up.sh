@@ -1,6 +1,7 @@
 #!/bin/sh
 DEV=$1
 VIP=$2
+IPDEV=$3
 shift
 
 if [ -z "$VIP" ]
@@ -12,3 +13,4 @@ for i in $VIP $IPS
 do
   ip addr add $i dev $IPDEV
 done
+ip link set $IPDEV up
