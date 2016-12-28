@@ -1,2 +1,3 @@
 docker build -t titpetric/ucarp -f Dockerfile .
 docker push titpetric/ucarp
+docker-cleanup
