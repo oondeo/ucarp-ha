@@ -22,6 +22,8 @@ do
 	echo "> Adding $IP on $IPDEV"
 
 	if (( ${#IPV6} > 0 )); then
+		# handle dadfailed
+		echo 0 > /proc/sys/net/ipv6/conf/$IPDEV/accept_dad
 		# adding ipv6 addr here
 		BITS=64
 		if (( ${#NETMASK} > 0 )); then
