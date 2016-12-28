@@ -30,7 +30,7 @@ shift; shift
 export IPS=$@
 
 export DEV=${DEV-eth0}
-export IPDEV=$(IPDEV-eth1}
+export IPDEV=${IPDEV-eth1}
 
 if [ -z "$PASS" ]
 then
