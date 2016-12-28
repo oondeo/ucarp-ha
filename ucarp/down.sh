@@ -12,7 +12,7 @@ if [ -z "$VIP" ]; then
 	echo "$0 interface vip [additional ips...]"
 fi
 
-for IP in $VIP $IPS
+for IP in $IPS
 do
 	# if > 0, we have netmask also
 	NETMASK="${IP//[^\/]}"
