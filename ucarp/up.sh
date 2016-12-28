@@ -6,11 +6,12 @@ shift
 
 if [ -z "$VIP" ]
 then
-  echo "$0 interface vip [additional ips...]"
+	echo "$0 interface vip [additional ips...]"
 fi
 
 for i in $VIP $IPS
 do
-  ip addr add $i dev $IPDEV
+	echo "- add $i on $IPDEV"
+	ip addr add $i dev $IPDEV
 done
 ip link set $IPDEV up
