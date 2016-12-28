@@ -22,7 +22,8 @@ do
 	echo "> Adding $IP on $IPDEV"
 
 	if (( ${#IPV6} > 0 )); then
-		# handle dadfailed
+		# handle dadfailed, needs `--privileged`
+		# more info https://github.com/docker/docker/issues/4717
 		echo 0 > /proc/sys/net/ipv6/conf/$IPDEV/accept_dad
 		# adding ipv6 addr here
 		BITS=64
