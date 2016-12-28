@@ -12,6 +12,10 @@ if [ -z "$VIP" ]; then
 	echo "$0 interface vip [additional ips...]"
 fi
 
+if [ ! -z "$BROADCAST" ]; then
+	BROADCAST="broadcast $BROADCAST"
+fi
+
 for IP in $IPS
 do
 	# if > 0, we have netmask also
@@ -36,10 +40,12 @@ do
 		# adding ipv6 addr here
 		BITS=32
 		if (( ${#NETMASK} > 0 )); then
-			ip addr add $IP dev $IPDEV
+			ip addr add $IP $BROADCAST dev $IPDEV
 		else
-			ip addr add $IP/$BITS dev $IPDEV
+			ip addr add $IP/$BITS $BROADCAST dev $IPDEV
 		fi
+		# only the first IP in list should have a broadcast ADDR
+		BROADCAST=""
 	fi
 done
 

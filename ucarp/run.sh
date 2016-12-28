@@ -25,8 +25,10 @@ shutdown() {
 }
 
 export VIP=$1
-export PASS=$2
-shift; shift
+export BROADCAST=$2
+export PASS=$3
+
+shift 3
 export IPS=$@
 
 export DEV=${DEV-eth0}
@@ -37,6 +39,8 @@ then
   echo "$0 virtual-ip password"
   exit 1
 fi
+
+echo "Starting UCARP with floating IP $VIP Broadcast $BROADCAST"
 
 /ucarp/ucarp.sh &
 echo $! > $PIDFILE

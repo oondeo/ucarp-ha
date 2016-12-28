@@ -4,9 +4,12 @@ Assign Virtual / Floating IP with UCARP to your Docker Host for High Availabilit
 
 ### Usage
 
-docker run --rm --cap-add=NET_ADMIN --net=host -it titpetric/ucarp 10.0.75.20 foobar
+docker run --rm --cap-add=NET_ADMIN --net=host -it titpetric/ucarp 10.0.75.20 broadcast foobar [ip/netmask, ipv6/netmask, etc.]
 
-- where 10.0.75.20 is the floating / virtual ip and foobar is the password
+- where 10.0.75.20 is the floating / virtual ip
+- broadcast is the broadcast address (10.0.75.255 maybe)
+- foobar is the password
+- [ip/netmask] list should include the floating/virtual ip with netmask (10.0.75.20/24) in first place
 
 ### Credits
 
