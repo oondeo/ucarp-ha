@@ -12,6 +12,11 @@ if [ -z "$VIP" ]; then
 	echo "$0 interface vip [additional ips...]"
 fi
 
+if [ -f "/etc/network/interfaces" ]; then
+	ifdown $IPDEV --force
+	exit 0
+fi
+
 for IP in $IPS
 do
 	# if > 0, we have netmask also

@@ -12,6 +12,20 @@ if [ -z "$VIP" ]; then
 	echo "$0 interface vip [additional ips...]"
 fi
 
+if [ -f "/etc/network/interfaces" ]; then
+	ifup $IPDEV
+	for IP in $IPS
+	do
+		# if > 0, we have ipv6 notation
+		IPV6="${IP//[^\:]}"
+		if (( ${#IPV6} == 0 )); then
+			REALIP=$(echo $IP | awk -F'/' '{print $1}')
+			nohup arping -c 2 -A -S $REALIP -i $IPDEV $REALIP &
+		fi
+	done
+	exit 0
+fi
+
 if [ ! -z "$BROADCAST" ]; then
 	BROADCAST="broadcast $BROADCAST"
 fi
