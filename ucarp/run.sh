@@ -40,7 +40,7 @@ then
   exit 1
 fi
 
-echo "Starting UCARP with floating IP $VIP Broadcast $BROADCAST"
+echo "Starting UCARP with floating IP $VIP Broadcast $BROADCAST (${DOCKER_ENV})"
 
 /ucarp/ucarp.sh &
 echo $! > $PIDFILE
