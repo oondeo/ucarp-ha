@@ -1,3 +1,5 @@
-docker build -t titpetric/ucarp -f Dockerfile .
-docker push titpetric/ucarp
+docker build -t titpetric/ucarp:alpine -f Dockerfile.alpine .
+docker build -t titpetric/ucarp:debian -f Dockerfile.debian .
+docker push titpetric/ucarp:alpine
+docker push titpetric/ucarp:debian
 docker-cleanup
