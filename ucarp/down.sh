@@ -13,12 +13,15 @@ if [ -z "$VIP" ]; then
 fi
 
 if [ -f "/etc/network/interfaces" ]; then
+	echo "> Running ifdown $IPDEV"
 	# debian has --force, alpine has -f
 	if [[ "$(ifdown --help 2>&1 | grep '\-\-force' | wc -l)" == "1" ]]; then
-		ifdown $IPDEV --force
+		ifdown $IPDEV -v --force
 	else
-		ifdown $IPDEV -f
+		ifdown $IPDEV -v -f
 	fi
+	echo "> Done, setting link down"
+	ip link set $IPDEV down
 	exit 0
 fi
 
