@@ -1,3 +1,5 @@
+#!/bin/bash
+set -e
 docker build -t titpetric/ucarp:alpine -f Dockerfile.alpine .
 docker build -t titpetric/ucarp:debian -f Dockerfile.debian .
 docker push titpetric/ucarp:alpine
