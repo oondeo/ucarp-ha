@@ -13,7 +13,7 @@ if [ -z "$VIP" ]; then
 fi
 
 if [ -f "/etc/network/interfaces" ]; then
-	echo "> Running ifdown $IPDEV"
+	echo "> Running ifup $IPDEV"
 	ifup $IPDEV -v
 	for IP in $IPS
 	do
