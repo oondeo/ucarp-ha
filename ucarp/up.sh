@@ -22,7 +22,11 @@ if [ -f "/etc/network/interfaces" ]; then
 		if (( ${#IPV6} < 1 )); then
 			REALIP=$(echo $IP | awk -F'/' '{print $1}')
 			echo "> running arping for $REALIP"
-			nohup arping -c 2 -A -S $REALIP -i $IPDEV $REALIP &
+			if [[ "$DOCKER_ENV" == "alpine" ]]; then
+				nohup arping -c 2 -A -s $REALIP -I $IPDEV $REALIP &
+			else
+				nohup arping -c 2 -A -S $REALIP -i $IPDEV $REALIP &
+			fi
 		fi
 	done
 	echo "> Done with interface, state:"

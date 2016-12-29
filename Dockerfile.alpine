@@ -2,6 +2,8 @@ FROM alpine:3.4
 
 MAINTAINER Tit Petric <tit.petric@monotek.net>
 
+ENV DOCKER_ENV=alpine
+
 RUN apk --update add ucarp bash tcpdump ssmtp
 
 COPY ucarp/ /ucarp/

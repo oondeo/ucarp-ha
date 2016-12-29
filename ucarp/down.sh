@@ -15,10 +15,10 @@ fi
 if [ -f "/etc/network/interfaces" ]; then
 	echo "> Running ifdown $IPDEV"
 	# debian has --force, alpine has -f
-	if [[ "$(ifdown --help 2>&1 | grep '\-\-force' | wc -l)" == "1" ]]; then
-		ifdown $IPDEV -v --force
-	else
+	if [[ "$DOCKER_ENV" == "alpine" ]]; then
 		ifdown $IPDEV -v -f
+	else
+		ifdown $IPDEV -v --force
 	fi
 	echo "> Done, setting link down"
 	ip link set $IPDEV down
