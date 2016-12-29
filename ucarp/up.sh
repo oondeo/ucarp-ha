@@ -19,7 +19,7 @@ if [ -f "/etc/network/interfaces" ]; then
 	do
 		# if > 0, we have ipv6 notation
 		IPV6="${IP//[^\:]}"
-		if (( ${#IPV6} < 0 )); then
+		if (( ${#IPV6} < 1 )); then
 			REALIP=$(echo $IP | awk -F'/' '{print $1}')
 			echo "> running arping for $REALIP"
 			nohup arping -c 2 -A -S $REALIP -i $IPDEV $REALIP &
