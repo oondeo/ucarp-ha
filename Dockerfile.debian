@@ -4,7 +4,7 @@ FROM debian:stretch
 MAINTAINER Tit Petric <tit.petric@monotek.net>
 
 #RUN apk --update add ucarp bash tcpdump
-RUN apt-get -q update && apt-get -qy install ucarp tcpdump && apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
+RUN apt-get -q update && apt-get -qy install ucarp ssmtp tcpdump && apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 
 COPY ucarp/ /ucarp/
 
