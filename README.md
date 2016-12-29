@@ -11,6 +11,13 @@ docker run --rm --cap-add=NET_ADMIN --net=host -it titpetric/ucarp 10.0.75.20 br
 - foobar is the password
 - [ip/netmask] list should include the floating/virtual ip with netmask (10.0.75.20/24) in first place
 
+### Caveats
+
+The device `eth0` is a private lan, the device `eth1` is the one with all the public facing ips. On `eth0`, MAC address spoofing must be
+allowed. There's currently [a PR waiting on ucarp github to disable MAC addr spoofs](https://github.com/jedisct1/UCarp/pull/20/commits/ca318a8abb4ed2bfa8737c7c76ed3a19b4306996).
+
+In case you're running Hyper-V, the setting must be enabled on the LAN (eth0) network card device.
+
 ### Credits
 
 - Tit Petric (myself)
